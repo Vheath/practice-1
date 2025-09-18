@@ -6,6 +6,7 @@ int GetWordSize(char* word) {
   for (int i{0};; ++i)
     if (word[i] == '\0') return i;
 }
+
 void SetLetterMap(bool* map, char* word, int wordSize) {
   for (int i{0}; i < 26; ++i) map[i] = false;
   for (int i{0}; i < wordSize; ++i) {
@@ -61,6 +62,7 @@ int main(int argc, char** argv) {
     return 2;
   }
 
+  int counter{};
   while (!fileInput.eof()) {
     char tempWord[33];
     fileInput >> tempWord;
@@ -68,7 +70,9 @@ int main(int argc, char** argv) {
     bool tempLetterMap[26];
     SetLetterMap(tempLetterMap, tempWord, GetWordSize(tempWord));
     if (SubLetterMap(promptLetterMap, tempLetterMap)) {
-      std::cout << tempWord << '\n';
+      ++counter;
+      // std::cout << tempWord << '\n';
     }
   }
+  std::cout << counter << '\n';
 }
