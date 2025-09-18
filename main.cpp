@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
   }
 
   int counter{};
-  while (!fileInput.eof()) {
+  while (true) {
     char tempWord[33];
     fileInput >> tempWord;
     if (fileInput.eof()) break;
@@ -71,7 +71,6 @@ int main(int argc, char** argv) {
     SetLetterMap(tempLetterMap, tempWord, GetWordSize(tempWord));
     if (SubLetterMap(promptLetterMap, tempLetterMap)) {
       ++counter;
-      // std::cout << tempWord << '\n';
     }
   }
   std::cout << counter << '\n';
